@@ -11,14 +11,27 @@ export const ChatReader = styled.div`
   flex-direction: column;
 `;
 export const ChatInput = styled.input`
-  height: 4em;
-  padding: 1em;
+  height: 4rem;
+  padding: 1rem;
 `;
 
 export const ChatMessage = styled.div`
-  padding: 1em;
+  margin-left: 3.5rem;
+`;
+
+export const ChatMessageWrapper = styled.div`
+  padding: 0.5rem;
   flex: 1;
   &:hover {
-    background-color: #f5f5f5;
+    background-color: ${({ theme }) => theme.colors.card.hover};
   }
+`;
+export const ChatMessageHeader = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const ChatUserName = styled.h3`
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-left: 1rem;
 `;
