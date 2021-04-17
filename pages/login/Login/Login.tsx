@@ -1,6 +1,8 @@
 import { useIntl } from "react-intl";
 import { useForm } from "react-hook-form";
 
+import { useRouter } from "next/router";
+
 import Button from "../../../components/Button";
 
 import Card from "../../../components/Card";
@@ -9,15 +11,23 @@ import Input from "../../../components/Input";
 import LoginWrapper from "../../../components/LoginWrapper";
 import { Form } from "./styled";
 
+import { signIn } from "../../../lib/auth";
+import { ISignIn } from "./login.types";
+
+import { chat } from "../../../constants/routes";
+
 const Login: React.FC = () => {
   const intl = useIntl();
+  const router = useRouter();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (values) => console.log(values);
+  const onSubmit = ({ email, password }: ISignIn) => {
+    signIn(email, password).then(() => router.push(chat));
+  };
 
   return (
     <LoginWrapper>
@@ -26,6 +36,8 @@ const Login: React.FC = () => {
           <HCenter>
             <Input
               {...register("email", { required: true })}
+              isInvalid={Boolean(errors.email)}
+              errorMsg={intl.formatMessage({ id: "errors.email" })}
               placeholder={intl.formatMessage({ id: "placeholder.email" })}
             />
           </HCenter>
@@ -33,9 +45,10 @@ const Login: React.FC = () => {
             <Input
               {...register("password", {
                 required: true,
-                validate: (value) =>
-                  value.length > 5 || "Deveria ter mais de 5 caracteres",
+                validate: (value) => value.length > 7,
               })}
+              isInvalid={Boolean(errors.password)}
+              errorMsg={intl.formatMessage({ id: "errors.password" })}
               placeholder={intl.formatMessage({ id: "placeholder.password" })}
             />
             {errors.password && <span>{errors.password.message}</span>}

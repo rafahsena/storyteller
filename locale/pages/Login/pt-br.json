@@ -1,5 +1,7 @@
 {
   "placeholder.email": "E-mail",
   "placeholder.password": "Senha",
-  "login.button": "Entrar"
+  "login.button": "Entrar",
+  "errors.email": "Digite um e-mail válido",
+  "errors.password": "A senha precisa ter pelo menos oito caracteres"
 }
