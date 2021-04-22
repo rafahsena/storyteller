@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import Chat from "./Chat";
+import Chat from "./ChatRoom";
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

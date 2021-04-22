@@ -7,5 +7,6 @@ export const signIn = async (
   password: string
 ): Promise<SignInResponse> => {
   const response = await http.post(SIGN_IN, { email, password });
+  localStorage.setItem("token", response.data.token);
   return response.data;
 };

@@ -6,7 +6,7 @@ interface LoginWrapperProps {
 }
 
 const classes =
-  "bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-500 h-screen flex flex-col items-center justify-center";
+  "bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-500 flex-1 flex flex-col items-center justify-center";
 
 const LoginWrapper: React.FC<LoginWrapperProps> = ({
   children,
