@@ -1,6 +1,8 @@
-import { Box, Flex } from "@chakra-ui/layout";
+import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
 import { useIntl } from "react-intl";
 import { RoomItemProps } from "./RoomItem.type";
+
+import { theme } from "../../theme";
 
 const RoomItem: React.FC<RoomItemProps> = ({
   room: { name, _id, owner, createdAt },
@@ -8,12 +10,22 @@ const RoomItem: React.FC<RoomItemProps> = ({
 }: RoomItemProps) => {
   const intl = useIntl();
   return (
-    <Flex flex={1} onClick={() => onClick(_id)}>
-      <Box>{name}</Box>
-      <Box>
+    <Flex
+      flex={1}
+      flexDirection="column"
+      paddingX={8}
+      paddingY={4}
+      cursor="pointer"
+      onClick={() => onClick(_id)}
+      _hover={{ bg: theme.colors.card.hover }}
+    >
+      <Heading size="lg">{name}</Heading>
+      <Heading size="sm">
         {`${intl.formatMessage({ id: "room.master" })} - ${owner.name}`}
-      </Box>
-      <Box>{`${intl.formatMessage({ id: "room.createdAt" })} - ${createdAt}`}</Box>
+      </Heading>
+      <Text size="xs">{`${intl.formatMessage({
+        id: "room.createdAt",
+      })} - ${new Date(createdAt).toLocaleString()}`}</Text>
     </Flex>
   );
 };

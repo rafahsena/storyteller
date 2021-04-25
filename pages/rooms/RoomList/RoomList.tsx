@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import RoomItem from "../../../components/RoomItem/RoomItem";
@@ -8,9 +9,13 @@ const RoomList: React.FC<RoomListProps> = ({ rooms }: RoomListProps) => {
   const router = useRouter();
   const onRoomClick = (roomId: string) => router.push(`${CHAT_ROOM}/${roomId}`);
 
-  return rooms.map((room) => (
-    <RoomItem room={room} key={room._id} onClick={onRoomClick} />
-  ));
+  return (
+    <Box>
+      {rooms.map((room) => (
+        <RoomItem room={room} key={room._id} onClick={onRoomClick} />
+      ))}
+    </Box>
+  );
 };
 
 export default RoomList;
