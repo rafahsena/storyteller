@@ -2,7 +2,7 @@ import SocketIOClient from "socket.io-client";
 import { API_URL } from "../../constants/urls";
 import { http } from "../http";
 import { GET_CHAT_MESSAGES, GET_ROOM_CHAT_MESSAGE } from "./socket.commands";
-import { SEND_MESSAGE } from "../../constants/endpoints";
+import { chat } from "../../constants/endpoints";
 
 export const socket = SocketIOClient(API_URL);
 
@@ -12,7 +12,7 @@ export const connectToServer = (roomId: string) => {
 
 export const sendMessageToRoom = (roomId: string, message: any) => {
   const token = localStorage.getItem("token");
-  http.post(`${SEND_MESSAGE}/${roomId}`, message, {
+  http.post(`${chat}/${roomId}`, message, {
     headers: {
       authorization: `Bearer ${token}`,
     },

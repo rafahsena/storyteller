@@ -1,1 +1,1 @@
-import RoomList from "./RoomList";
+import RoomList from "../rooms/RoomList";

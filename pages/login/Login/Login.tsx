@@ -14,7 +14,7 @@ import { Form } from "./styled";
 import { signIn } from "../../../lib/auth";
 import { ISignIn } from "./login.types";
 
-import { chat } from "../../../constants/routes";
+import { ROOM_LIST } from "../../../constants/routes";
 
 const Login: React.FC = () => {
   const intl = useIntl();
@@ -26,7 +26,7 @@ const Login: React.FC = () => {
   } = useForm();
 
   const onSubmit = ({ email, password }: ISignIn) => {
-    signIn(email, password).then(() => router.push(chat));
+    signIn(email, password).then(() => router.push(ROOM_LIST));
   };
 
   return (
@@ -47,6 +47,7 @@ const Login: React.FC = () => {
                 required: true,
                 validate: (value) => value.length > 7,
               })}
+              type="password"
               isInvalid={Boolean(errors.password)}
               errorMsg={intl.formatMessage({ id: "errors.password" })}
               placeholder={intl.formatMessage({ id: "placeholder.password" })}

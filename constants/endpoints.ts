@@ -1,2 +1,3 @@
-export const SIGN_IN: string = "/login";
-export const SEND_MESSAGE: string = "/chat";
+export const chat: string = "/chat";
+export const rooms: string = "/rooms";
+export const sign_in: string = "/login";
